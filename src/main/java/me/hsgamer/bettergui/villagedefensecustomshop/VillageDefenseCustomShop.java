@@ -1,8 +1,8 @@
-package me.hsgamer.bettergui.exampleaddon;
+package me.hsgamer.bettergui.villagedefensecustomshop;
 
 import me.hsgamer.bettergui.api.addon.BetterGUIAddon;
 
-public final class ExampleAddon extends BetterGUIAddon {
+public final class VillageDefenseCustomShop extends BetterGUIAddon {
 
     /**
      * Called when loading the addon

@@ -5,17 +5,17 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>me.hsgamer.bettergui</groupId>
-  <artifactId>ExampleAddon</artifactId>
+  <artifactId>VillageDefenseCustomShop</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>ExampleAddon</name>
-  <description>An Example addon for BetterGUI</description>
+  <name>VillageDefenseCustomShop</name>
+  <description>An addon for BetterGUI to create shops for VillageDefense</description>
 
   <properties>
     <java.version>1.8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.mainClass>me.hsgamer.bettergui.exampleaddon.ExampleAddon</project.mainClass>
+    <project.mainClass>me.hsgamer.bettergui.villagedefensecustomshop.VillageDefenseCustomShop</project.mainClass>
   </properties>
 
   <build>
@@ -72,6 +72,10 @@
       <id>codemc-snapshots</id>
       <url>https://repo.codemc.io/repository/maven-snapshots/</url>
     </repository>
+    <repository>
+      <id>plugilyprojects</id>
+      <url>https://maven.plugily.xyz</url>
+    </repository>
   </repositories>
 
   <dependencies>
@@ -85,6 +89,12 @@
       <groupId>me.HSGamer</groupId>
       <artifactId>BetterGUI</artifactId>
       <version>6.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>plugily.projects</groupId>
+      <artifactId>villagedefense</artifactId>
+      <version>4.6.1-dev25</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
