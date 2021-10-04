@@ -1,6 +1,7 @@
 package me.hsgamer.bettergui.villagedefensecustomshop;
 
 import me.hsgamer.bettergui.api.addon.BetterGUIAddon;
+import me.hsgamer.bettergui.builder.RequirementBuilder;
 import me.hsgamer.bettergui.lib.core.common.Validate;
 import me.hsgamer.bettergui.lib.core.config.Config;
 import plugily.projects.villagedefense.arena.ArenaRegistry;
@@ -10,6 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class VillageDefenseCustomShop extends BetterGUIAddon {
+
+    @Override
+    public void onEnable() {
+        RequirementBuilder.INSTANCE.register(OrbRequirement::new, "orb");
+    }
 
     @Override
     public void onPostEnable() {
