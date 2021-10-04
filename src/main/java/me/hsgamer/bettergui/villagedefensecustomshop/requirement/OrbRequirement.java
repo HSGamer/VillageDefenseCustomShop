@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import plugily.projects.villagedefense.Main;
 import plugily.projects.villagedefense.api.StatsStorage;
+import plugily.projects.villagedefense.arena.ArenaRegistry;
+import plugily.projects.villagedefense.arena.options.ArenaOption;
 import plugily.projects.villagedefense.user.User;
 
 import java.math.BigDecimal;
@@ -53,7 +55,10 @@ public class OrbRequirement extends TakableRequirement<Integer> {
             return;
         }
         User user = plugin.getUserManager().getUser(player);
-        user.addStat(StatsStorage.StatisticType.ORBS, -checked.remove(player.getUniqueId()));
+        int orbs = checked.remove(player.getUniqueId());
+        int currentOrbs = user.getStat(StatsStorage.StatisticType.ORBS);
+        user.setStat(StatsStorage.StatisticType.ORBS, currentOrbs - orbs);
+        Optional.ofNullable(ArenaRegistry.getArena(player)).ifPresent(arena -> arena.addOptionValue(ArenaOption.TOTAL_ORBS_SPENT, orbs));
     }
 
     @Override
