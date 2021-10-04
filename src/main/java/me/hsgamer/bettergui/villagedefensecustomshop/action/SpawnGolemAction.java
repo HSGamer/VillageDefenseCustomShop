@@ -12,10 +12,10 @@ import plugily.projects.villagedefense.handlers.language.Messages;
 
 import java.util.UUID;
 
-public class SpawnWolfAction extends BaseAction {
+public class SpawnGolemAction extends BaseAction {
     private final Main plugin;
 
-    public SpawnWolfAction(String string) {
+    public SpawnGolemAction(String string) {
         super(string);
         this.plugin = JavaPlugin.getPlugin(Main.class);
     }
@@ -31,8 +31,8 @@ public class SpawnWolfAction extends BaseAction {
             return;
         }
         taskChain.sync(() -> {
-            arena.spawnWolf(arena.getStartLocation(), player);
-            player.sendMessage(plugin.getChatManager().getPrefix() + plugin.getChatManager().colorMessage(Messages.WOLF_SPAWNED));
+            arena.spawnGolem(arena.getStartLocation(), player);
+            player.sendMessage(plugin.getChatManager().getPrefix() + plugin.getChatManager().colorMessage(Messages.GOLEM_SPAWNED));
         });
     }
 }

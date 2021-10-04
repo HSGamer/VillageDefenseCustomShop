@@ -6,6 +6,8 @@ import me.hsgamer.bettergui.builder.RequirementBuilder;
 import me.hsgamer.bettergui.lib.core.common.Validate;
 import me.hsgamer.bettergui.lib.core.config.Config;
 import me.hsgamer.bettergui.villagedefensecustomshop.action.GiveOrbAction;
+import me.hsgamer.bettergui.villagedefensecustomshop.action.SpawnGolemAction;
+import me.hsgamer.bettergui.villagedefensecustomshop.action.SpawnWolfAction;
 import me.hsgamer.bettergui.villagedefensecustomshop.requirement.OrbRequirement;
 import plugily.projects.villagedefense.arena.ArenaRegistry;
 
@@ -19,6 +21,8 @@ public final class VillageDefenseCustomShop extends BetterGUIAddon {
     public void onEnable() {
         RequirementBuilder.INSTANCE.register(OrbRequirement::new, "orb");
         ActionBuilder.INSTANCE.register(GiveOrbAction::new, "give-orb");
+        ActionBuilder.INSTANCE.register(SpawnGolemAction::new, "spawn-golem");
+        ActionBuilder.INSTANCE.register(SpawnWolfAction::new, "spawn-wolf");
     }
 
     @Override
