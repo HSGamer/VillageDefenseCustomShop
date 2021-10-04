@@ -1,4 +1,4 @@
-package me.hsgamer.bettergui.villagedefensecustomshop;
+package me.hsgamer.bettergui.villagedefensecustomshop.requirement;
 
 import me.hsgamer.bettergui.api.requirement.TakableRequirement;
 import me.hsgamer.bettergui.config.MessageConfig;
@@ -53,8 +53,7 @@ public class OrbRequirement extends TakableRequirement<Integer> {
             return;
         }
         User user = plugin.getUserManager().getUser(player);
-        int orbs = user.getStat(StatsStorage.StatisticType.ORBS);
-        user.setStat(StatsStorage.StatisticType.ORBS, orbs + -checked.remove(player.getUniqueId()));
+        user.addStat(StatsStorage.StatisticType.ORBS, -checked.remove(player.getUniqueId()));
     }
 
     @Override
