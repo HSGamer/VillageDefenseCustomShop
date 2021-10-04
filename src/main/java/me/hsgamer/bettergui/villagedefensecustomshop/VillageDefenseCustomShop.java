@@ -8,7 +8,9 @@ import me.hsgamer.bettergui.lib.core.config.Config;
 import me.hsgamer.bettergui.villagedefensecustomshop.action.GiveOrbAction;
 import me.hsgamer.bettergui.villagedefensecustomshop.action.SpawnGolemAction;
 import me.hsgamer.bettergui.villagedefensecustomshop.action.SpawnWolfAction;
+import me.hsgamer.bettergui.villagedefensecustomshop.requirement.GolemLimitRequirement;
 import me.hsgamer.bettergui.villagedefensecustomshop.requirement.OrbRequirement;
+import me.hsgamer.bettergui.villagedefensecustomshop.requirement.WolfLimitRequirement;
 import plugily.projects.villagedefense.arena.ArenaRegistry;
 
 import java.math.BigDecimal;
@@ -20,6 +22,8 @@ public final class VillageDefenseCustomShop extends BetterGUIAddon {
     @Override
     public void onEnable() {
         RequirementBuilder.INSTANCE.register(OrbRequirement::new, "orb");
+        RequirementBuilder.INSTANCE.register(GolemLimitRequirement::new, "golem-limit");
+        RequirementBuilder.INSTANCE.register(WolfLimitRequirement::new, "wolf-limit");
         ActionBuilder.INSTANCE.register(GiveOrbAction::new, "give-orb");
         ActionBuilder.INSTANCE.register(SpawnGolemAction::new, "spawn-golem");
         ActionBuilder.INSTANCE.register(SpawnWolfAction::new, "spawn-wolf");
