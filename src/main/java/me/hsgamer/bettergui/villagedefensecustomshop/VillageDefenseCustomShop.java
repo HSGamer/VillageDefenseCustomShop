@@ -1,49 +1,36 @@
 package me.hsgamer.bettergui.villagedefensecustomshop;
 
 import me.hsgamer.bettergui.api.addon.BetterGUIAddon;
+import me.hsgamer.bettergui.lib.core.common.Validate;
+import me.hsgamer.bettergui.lib.core.config.Config;
+import plugily.projects.villagedefense.arena.ArenaRegistry;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class VillageDefenseCustomShop extends BetterGUIAddon {
 
-    /**
-     * Called when loading the addon
-     *
-     * @return whether the addon is loaded properly
-     */
-    @Override
-    public boolean onLoad() {
-        return true;
-    }
-
-    /**
-     * Called when enabling the addon
-     */
-    @Override
-    public void onEnable() {
-        // Enable logic
-    }
-
-    /**
-     * Called after all addons were loaded
-     */
     @Override
     public void onPostEnable() {
-        // Post Enable logic
+        Config config = getConfig();
+        Map<Integer, String> defaultMap = convert(config.getNormalizedValues("default", false));
+        ArenaRegistry.getArenas().forEach(arena -> {
+            Map<Integer, String> map = defaultMap;
+            if (config.contains(arena.getId())) {
+                map = convert(config.getNormalizedValues(arena.getId(), false));
+            }
+            if (!map.isEmpty()) {
+                MenuOpener opener = new MenuOpener(arena);
+                opener.getMap().putAll(map);
+                arena.getShopManager().setOpenMenuConsumer(opener);
+            }
+        });
     }
 
-    /**
-     * Called when disabling the addon
-     */
-    @Override
-    public void onDisable() {
-        // Disable logic
-    }
-
-
-    /**
-     * Called when reloading
-     */
-    @Override
-    public void onReload() {
-        // Reload logic
+    private Map<Integer, String> convert(Map<String, Object> map) {
+        Map<Integer, String> converted = new HashMap<>();
+        map.forEach((k, v) -> Validate.getNumber(k).map(BigDecimal::intValue).ifPresent(wave -> converted.put(wave, String.valueOf(v))));
+        return converted;
     }
 }
